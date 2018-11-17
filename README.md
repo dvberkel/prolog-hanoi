@@ -27,7 +27,7 @@ If you think hard about this suggestion you will notice that restrictions of the
 To demonstrate the algorithm, we will perform it by hand for a tower of three disks.
 
 | X     | Y    | Z       | Stack | Term         | Segment   |
-|-----------------------------------------------------------|
+|-------|------|---------|-------|--------------|-----------|
 | 1,2,3 |      |         |       | move 3 X Y Z |           |
 | 1,2,3 |      |         | 1     | move 2 X Z Y |           |
 | 2,3   |      | 1       | 1.1   | move 1 X Y Z | [X, Z]    |
