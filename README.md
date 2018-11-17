@@ -12,4 +12,18 @@ The [towers of Hanoi][hanoi]
 > * Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
 > * No disk may be placed on top of a smaller disk.
 
+## Usage
+I am using [SWI-Prolog][swi-prolog]. Once installed you can run a [REPL][repl] by executing `swipl`. If you do this in the directory you cloned this repository to, loading will be easier.
+
+Load the `hanoi.pl` file at the REPL prompt.
+
+```plain
+?- [hanoi].
+true.
+```
+
+The system is now ready to answer questions about the towers of Hanoi.
+
 [hanoi]: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+[swi-prolog]: http://www.swi-prolog.org/
+[repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
