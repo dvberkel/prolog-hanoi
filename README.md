@@ -26,20 +26,26 @@ If you think hard about this suggestion you will notice that restrictions of the
 ### Example
 To demonstrate the algorithm, we will perform it by hand for a tower of three disks.
 
-```plain
-| X     | Y    | Z       | Stack | Step         | Path   |
-|--------------------------------------------------------|
-| 1,2,3 |      |         |       | move 3 X Y Z |        |
-| 1,2,3 |      |         | 1     | move 2 X Z Y |        |
-| 2,3   |      | 1       | 1.1   | move 1 X Y Z | [X, Z] |
-| 3     | 2    | 1       | 1.2   |              | [X, Y] |
-| 3     | 1, 2 |         | 1.3   | move 1 Z Y X | [Z, Y] |
-|       | 1, 2 | 3       | 2     |              | [X, Z] |
-|       | 1, 2 | 3       | 3     | move 2 Y X Z |        |
-| 1     | 2    | 3       | 3.1   | move 1 Y Z X | [Y, X] |
-| 1     |      | 2, 3    | 3.2   |              | [Y, Z] |
-|       |      | 1, 2, 3 | 3.3   | move 1 X Y Z | [X, Z] |
-```
+| X     | Y    | Z       | Stack | Term         | Segment   |
+|-----------------------------------------------------------|
+| 1,2,3 |      |         |       | move 3 X Y Z |           |
+| 1,2,3 |      |         | 1     | move 2 X Z Y |           |
+| 2,3   |      | 1       | 1.1   | move 1 X Y Z | [X, Z]    |
+| 3     | 2    | 1       | 1.2   |              | [X, Y]    |
+| 3     | 1, 2 |         | 1.3   | move 1 Z Y X | [Z, Y]    |
+|       | 1, 2 | 3       | 2     |              | [X, Z]    |
+|       | 1, 2 | 3       | 3     | move 2 Y X Z |           |
+| 1     | 2    | 3       | 3.1   | move 1 Y Z X | [Y, X]    |
+| 1     |      | 2, 3    | 3.2   |              | [Y, Z]    |
+|       |      | 1, 2, 3 | 3.3   | move 1 X Y Z | [X, Z]    |
+
+In the first three columns you will find the contents of poles `X`, `Y` and `Z` respectively. It contains a comma separated list of disks. A disk is represented by its diameter.
+
+The stack column shows which phase of the algorithm is being executed. The first row is empty, and each subsequent row indicates which of the phase in the algorithm is performed. A dot indicate on level of recursion. E.g. `1.2` indicated that we are in phase 1 for `move 3 X Y Z` part of the algorithm, and in phase 2 of the `move 2 X Z Y` algorithm.
+
+The term column shows the corresponding term that we are considering.
+
+The segment column shows the path segment we are executing. When one reads the segment from top to bottom, one retrieves the solution to the puzzle.
 
 ## Usage
 I am using [SWI-Prolog][swi-prolog]. Once installed you can run a [REPL][repl] by executing `swipl`. If you do this in the directory you cloned this repository to, loading will be easier.
