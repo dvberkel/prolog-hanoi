@@ -47,6 +47,33 @@ The term column shows the corresponding term that we are considering.
 
 The segment column shows the path segment we are executing. When one reads the segment from top to bottom, one retrieves the solution to the puzzle.
 
+## Translation
+We will translate the idea into Prolog. I will be using [SWI-Prolog][swi-prolog].
+
+Prolog concerns it self with facts. The fact that we will consider is the following:
+
+> given a number of disks `N` a start pole `X`, an auxiliary pole `Y` and a target pole `Z`, `P` is the solution that moves the `n` disk tower from pole `X` to pole `Z` with auxiliary pole `Y`.
+
+The term that we will use it `move(N, X, Y, Z, P)`.
+
+The base case of the recursion corresponds to the the following fact.
+
+```prolog
+move(1, X, _, Z, [[X, Z]]).
+```
+
+The recursive step corresponds ot the rule
+
+```prolog
+move(N, X, Y, Z, P) :-    /* To move N disks from X to Z                 */
+    M is (N - 1),         /* we first must move the smaller N-1 disks    */
+    move(M, X, Z, Y, P1), /* from X to Y                                 */
+    move(1, X, Y, Z, P2), /* then move the largest disk from X to Z      */
+    move(M, Y, X, Z, P3), /* then move the smaller N-1 disks form Y to Z */
+    append(P1, P2, Q),    /* we get the corresponding solution           */
+    append(Q, P3, P).     /* by appding all the steps.                   */
+```
+
 ## Usage
 I am using [SWI-Prolog][swi-prolog]. Once installed you can run a [REPL][repl] by executing `swipl`. If you do this in the directory you cloned this repository to, loading will be easier.
 
