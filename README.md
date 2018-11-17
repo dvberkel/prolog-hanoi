@@ -86,6 +86,21 @@ true.
 
 The system is now ready to answer questions about the towers of Hanoi.
 
+To aks for the solution of the 3 disk tower of Hanoi problem one asks Prolog for
+
+```plain
+?- move(3, X, Y, Z, P).
+```
+
+Prolog responds with
+
+```plain
+P = [[X, Z], [X, Y], [Z, Y], [X, Z], [Y, X], [Y, Z], [X, Z]] .
+
+```
+
+Which is the same solution we found in our example.
+
 [hanoi]: https://en.wikipedia.org/wiki/Tower_of_Hanoi
 [swi-prolog]: http://www.swi-prolog.org/
 [repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
