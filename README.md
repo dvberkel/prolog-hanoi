@@ -86,21 +86,17 @@ true.
 
 The system is now ready to answer questions about the towers of Hanoi.
 
-To aks for the solution of the 3 disk tower of Hanoi problem one asks Prolog for
+## Generalization
+The towers of Hanoi can be generalized. So instead of using only 3 rods, one could use `k` number of rods, where `k>=3`. Notice that the `k=2` case can only be solved with one disk.
 
-```plain
-?- move(3, X, Y, Z, P).
-```
+For the generalized problem one could use the [Frame-Stewart algorithm][stewart] algorithm. It is [proven][stewart-proof] to be optimal by Roberto Demontis. The _Frame-Stewart_ algorithm is
 
-Prolog responds with
-
-```plain
-P = [[X, Z], [X, Y], [Z, Y], [X, Z], [Y, X], [Y, Z], [X, Z]] .
-
-```
-
-Which is the same solution we found in our example.
+1. Move top `m` disks on a free pole, other than the target pole.
+2. Transfer the remaining `n-m` disks to the target pole without using the pole which holds the top `m` disks.
+3. Move top 'm' disks from it's pole to the target pole.
 
 [hanoi]: https://en.wikipedia.org/wiki/Tower_of_Hanoi
 [swi-prolog]: http://www.swi-prolog.org/
 [repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+[stewart]: https://en.wikipedia.org/wiki/Tower_of_Hanoi#With_four_pegs_and_beyond
+[stewart-proof]: https://arxiv.org/pdf/1203.3280.pdf
