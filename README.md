@@ -52,7 +52,7 @@ We will translate the idea into Prolog. I will be using [SWI-Prolog][swi-prolog]
 
 Prolog concerns it self with facts. The fact that we will consider is the following:
 
-> given a number of disks `N` a start pole `X`, an auxiliary pole `Y` and a target pole `Z`, `P` is the solution that moves the `n` disk tower from pole `X` to pole `Z` with auxiliary pole `Y`.
+> given a number of disks `N` a start pole `X`, an auxiliary pole `Y` and a target pole `Z`, `P` is the solution that moves the `N` disk tower from pole `X` to pole `Z` with auxiliary pole `Y`.
 
 The term that we will use it `move(N, X, Y, Z, P)`.
 
